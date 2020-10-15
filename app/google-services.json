@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "891403750824",
+    "firebase_url": "https://kasi-cuisines-1440e.firebaseio.com",
+    "project_id": "kasi-cuisines-1440e",
+    "storage_bucket": "kasi-cuisines-1440e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:891403750824:android:dbed8603f9bf6be560a19d",
+        "android_client_info": {
+          "package_name": "com.bradley.kasicuisines"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "891403750824-g5ksq286n3r7ltjlg3tfl9eier6nk9sg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMzfoBIk6nk6NAP_OOuf3LwUelIH3m3O4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "891403750824-g5ksq286n3r7ltjlg3tfl9eier6nk9sg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

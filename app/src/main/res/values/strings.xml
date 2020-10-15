@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Kasi Cuisines</string>
+    <string name="slogan">Siyak\'lethela i gaulo!</string>
+    <string name="kasi_gaulo">Kasi Gaulo</string>
+    <string name="signin_with_email">Signin with email</string>
+    <string name="signin_with_phone">Signin with phone</string>
+    <string name="sign_up">Sign up</string>
+    <string name="home_page_text">Get you favorite kasi meal nearest to you and have it delivered to your door.</string>
+</resources>
