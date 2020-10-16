@@ -6,4 +6,19 @@
     <string name="signin_with_phone">Signin with phone</string>
     <string name="sign_up">Sign up</string>
     <string name="home_page_text">Get you favorite kasi meal nearest to you and have it delivered to your door.</string>
+    <string name="hint_first_name">First name</string>
+    <string name="hint_last_name">Last name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_phone">Phone</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="register_business">Register</string>
+    <string name="hint_mobile_phone_number">Mobile Phone Number</string>
+    <string name="hint_store_address">Store address</string>
+    <string name="hint_store_name">Store name</string>
+    <string name="sign_in_with">Sign in with</string>
+    <string name="or">OR</string>
+    <string name="sign_in_with_email">email</string>
+    <string name="sign_in_with_phone">phone</string>
+    <string name="your_address">Your address</string>
 </resources>
