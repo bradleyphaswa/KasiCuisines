@@ -24,6 +24,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/customer_registration"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/c_address"
                 android:layout_width="match_parent"

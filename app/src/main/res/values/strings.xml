@@ -10,7 +10,7 @@
     <string name="hint_last_name">Last name</string>
     <string name="hint_email">Email</string>
     <string name="hint_phone">Phone</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_password">Create Password</string>
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="register_business">Register</string>
     <string name="hint_mobile_phone_number">Mobile Phone Number</string>
@@ -21,4 +21,13 @@
     <string name="sign_in_with_email">email</string>
     <string name="sign_in_with_phone">phone</string>
     <string name="your_address">Your address</string>
+    <string name="prompt_password">password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register">Register</string>
+    <string name="resend_verification_email">Resend verification email</string>
+    <string name="customer_login">Customer Login</string>
+    <string name="business_registration">Business Registration</string>
+    <string name="business_login">Business Login</string>
+    <string name="customer_registration">Customer Registration</string>
+    <string name="driver_registration">Driver Registration</string>
 </resources>
