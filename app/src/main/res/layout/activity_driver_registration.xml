@@ -195,7 +195,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/d_signin_email"
+                    android:id="@+id/d_email_link_button"
                     android:background="@drawable/button_blue"
                     android:textColor="@color/colorWhite"
                     android:layout_width="wrap_content"
@@ -204,7 +204,7 @@
                     android:text="@string/sign_in_with_email" />
 
                 <Button
-                    android:id="@+id/d_signin_phone"
+                    android:id="@+id/d_phone_link_button"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/button_red"
                     android:textColor="@color/colorWhite"

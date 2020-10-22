@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "891403750824-njv6teuenkslg0h8php7u46mtp0v8j7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bradley.kasicuisines",
+            "certificate_hash": "d1d4d0d8e0da705885d84f1f331d71c55c49a384"
+          }
+        },
+        {
           "client_id": "891403750824-g5ksq286n3r7ltjlg3tfl9eier6nk9sg.apps.googleusercontent.com",
           "client_type": 3
         }

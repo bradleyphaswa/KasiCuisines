@@ -8,7 +8,6 @@
     tools:context=".BusinessLoginEmail">
 
     <ScrollView
-        android:id="@+id/business_login_form"
         android:layout_width="288dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_shape"
@@ -18,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/b_linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"

@@ -51,18 +51,13 @@
 
                 </com.hbb20.CountryCodePicker>
 
-                <com.google.android.material.textfield.TextInputLayout
+                <EditText
                     android:id="@+id/c_phone"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone"
+                    />
 
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:hint="@string/hint_mobile_phone_number" />
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <Button
