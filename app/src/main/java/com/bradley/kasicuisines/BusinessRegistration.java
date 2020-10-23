@@ -166,12 +166,12 @@ public class BusinessRegistration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             HashMap<String, String> hashMap1 = new HashMap<>();
-                            hashMap1.put("Store Name", storeName);
-                            hashMap1.put("Store Address", storeAddress);
-                            hashMap1.put("First Name", firstName);
-                            hashMap1.put("Last Name", lastName);
-                            hashMap1.put("Email", email);
-                            hashMap1.put("Mobile No", phone);
+                            hashMap1.put("storeName", storeName);
+                            hashMap1.put("storeAddress", storeAddress);
+                            hashMap1.put("firstName", firstName);
+                            hashMap1.put("lastName", lastName);
+                            hashMap1.put("email", email);
+                            hashMap1.put("mobileNo", phone);
 
                             mFirebaseDatabase.getInstance().getReference("Restaurants")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
