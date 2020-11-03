@@ -1,19 +1,19 @@
-package com.bradley.kasicuisines.businessFoodPanel;
+package com.bradley.kasicuisines.models;
 
-public class FoodDetails {
+public class UpdateDishModel {
 
-    private String mealName,quantity, description, price, ImageURL, randomUID, restaurantId;
+    private String mealName, randomUID, description, quantity, price, imageURL, restaurantId;
 
-    public FoodDetails() {
+    public UpdateDishModel() {
     }
 
-    public FoodDetails(String mealName, String description, String quantity, String price, String imageURL, String randomUID, String restaurantId) {
+    public UpdateDishModel(String mealName, String randomUID, String description, String quantity, String price, String imageURL, String restaurantId) {
         this.mealName = mealName;
-        this.description = description;
-        this.price = price;
-        this.ImageURL = imageURL;
         this.randomUID = randomUID;
+        this.description = description;
         this.quantity = quantity;
+        this.price = price;
+        this.imageURL = imageURL;
         this.restaurantId = restaurantId;
     }
 
@@ -25,12 +25,12 @@ public class FoodDetails {
         this.mealName = mealName;
     }
 
-    public String getQuantity() {
-        return quantity;
+    public String getRandomUID() {
+        return randomUID;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    public void setRandomUID(String randomUID) {
+        this.randomUID = randomUID;
     }
 
     public String getDescription() {
@@ -39,6 +39,14 @@ public class FoodDetails {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
     public String getPrice() {
@@ -50,19 +58,11 @@ public class FoodDetails {
     }
 
     public String getImageURL() {
-        return ImageURL;
+        return imageURL;
     }
 
     public void setImageURL(String imageURL) {
-        ImageURL = imageURL;
-    }
-
-    public String getRandomUID() {
-        return randomUID;
-    }
-
-    public void setRandomUID(String randomUID) {
-        this.randomUID = randomUID;
+        this.imageURL = imageURL;
     }
 
     public String getRestaurantId() {

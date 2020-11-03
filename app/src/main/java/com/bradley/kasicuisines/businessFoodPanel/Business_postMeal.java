@@ -55,7 +55,7 @@ public class Business_postMeal extends AppCompatActivity {
     DatabaseReference databaseReference,dataa;
     FirebaseAuth Fauth;
     StorageReference ref;
-    String ChefId , RandomUID , storeAddress;
+    String restaurantId, RandomUID , province, city, suburb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class Business_postMeal extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        mealName = (TextInputLayout) findViewById(R.id.meal_name);
+        mealName = (TextInputLayout) findViewById(R.id.Meal_Name);
         desc = (TextInputLayout) findViewById(R.id.description);
         qty = (TextInputLayout) findViewById(R.id.quantity);
         pri = (TextInputLayout) findViewById(R.id.price);
@@ -74,14 +74,16 @@ public class Business_postMeal extends AppCompatActivity {
 
         try {
             String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            dataa = firebaseDatabase.getInstance().getReference("Restaurants").child(userid);
+            dataa = firebaseDatabase.getInstance().getReference("Restaurant").child(userid);
             dataa.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                     Restaurant restaurant = snapshot.getValue(Restaurant.class);
 
-                    storeAddress = restaurant.getStoreAddress();
+                    province = restaurant.getProvince();
+                    city = restaurant.getCity();
+                    suburb = restaurant.getSuburb();
                     imageButton = (ImageButton) findViewById(R.id.image_upload);
 
                     imageButton.setOnClickListener(new View.OnClickListener() {
@@ -124,15 +126,18 @@ public class Business_postMeal extends AppCompatActivity {
             progressDialog.show();
             RandomUID = UUID.randomUUID().toString();
             ref = storageReference.child(RandomUID);
-            ChefId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            restaurantId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             ref.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            FoodDetails info = new FoodDetails(meal ,quantity,price,descrption,String.valueOf(uri),RandomUID,ChefId);
-                            firebaseDatabase.getInstance().getReference("FoodDetails").child(storeAddress).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUID)
+                            FoodDetails info =
+                                    new FoodDetails(meal , descrption, quantity,price, String.valueOf(uri),RandomUID, restaurantId);
+                            firebaseDatabase.getInstance().getReference("FoodDetails")
+                                    .child(province).child(city).child(suburb)
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUID)
                                     .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

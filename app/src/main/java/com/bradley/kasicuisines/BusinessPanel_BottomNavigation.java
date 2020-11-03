@@ -21,6 +21,20 @@ public class BusinessPanel_BottomNavigation extends AppCompatActivity implements
         setContentView(R.layout.activity_business_panel__bottom_navigation);
         BottomNavigationView navigationView = findViewById(R.id.business_bottom_nav);
         navigationView.setOnNavigationItemSelectedListener(this);
+        String name = getIntent().getStringExtra("PAGE");
+        if(name !=null) {
+            if(name.equalsIgnoreCase("OrderPage")) {
+                loadBusinessFragment(new BusinessPendingOrdersFragment());
+            } else if(name.equalsIgnoreCase("ConfirmPage")) {
+                loadBusinessFragment(new BusinessOrdersFragment());
+            } else if(name.equalsIgnoreCase("AcceptOrderPage")) {
+                loadBusinessFragment(new BusinessOrdersFragment());
+            } else if(name.equalsIgnoreCase("DeliveredPage")) {
+                loadBusinessFragment(new BusinessOrdersFragment());
+            }
+        } else {
+            loadBusinessFragment(new BusinessHomeFragment());
+        }
     }
 
     @Override

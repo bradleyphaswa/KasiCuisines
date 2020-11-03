@@ -28,12 +28,12 @@ import java.util.HashMap;
 public class CustomerRegistration extends AppCompatActivity {
 
     //Strings
-    String address, firstName, lastName, email,
+    String street, province, city, suburb, firstName, lastName, email,
             password, confirmPassword, phone, role="Customer",
             emailPattern = "[a-zA-Z0-9]+@[a-z]+\\.+[a-z]+";
 
     //Widgets
-    TextInputLayout c_address, c_first_name, c_last_name, c_email,
+    TextInputLayout c_street, c_province, c_city, c_suburb, c_first_name, c_last_name, c_email,
             c_password, c_confirm_password, c_phone;
     CountryCodePicker c_country_code;
     Button c_signup_button, c_signin_email, c_signin_phone;
@@ -44,14 +44,17 @@ public class CustomerRegistration extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase;
 
     ProgressDialog mDialog;
-    public final static String PHONE_NUMBER =  "phoneNumber";
+    public final static String PHONE_NUMBER =  "phoneNo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_registration);
 
-        c_address = findViewById(R.id.c_address);
+        c_street = findViewById(R.id.c_street_no);
+        c_province = findViewById(R.id.c_province);
+        c_city = findViewById(R.id.c_city);
+        c_suburb = findViewById(R.id.c_suburb);
         c_first_name = findViewById(R.id.c_first_name);
         c_last_name = findViewById(R.id.c_last_name);
         c_email = findViewById(R.id.c_email);
@@ -67,13 +70,17 @@ public class CustomerRegistration extends AppCompatActivity {
 
         mDialog = new ProgressDialog(CustomerRegistration.this);
 
-        mDatabaseReference = mFirebaseDatabase.getInstance().getReference("Customers");
+        mDatabaseReference = mFirebaseDatabase.getInstance().getReference("Customer");
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         c_signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                address = c_address.getEditText().getText().toString();
+                street = c_street.getEditText().getText().toString();
+                province = c_province.getEditText().getText().toString();
+                city = c_city.getEditText().getText().toString();
+                suburb = c_suburb.getEditText().getText().toString();
+                street = c_street.getEditText().getText().toString();
                 firstName = c_first_name.getEditText().getText().toString();
                 lastName = c_last_name.getEditText().getText().toString();
                 email = c_email.getEditText().getText().toString().trim();
@@ -81,7 +88,8 @@ public class CustomerRegistration extends AppCompatActivity {
                 confirmPassword = c_confirm_password.getEditText().getText().toString();
                 phone = c_phone.getEditText().getText().toString();
 
-                if(!isEmpty(address) && !isEmpty(firstName) &&
+                if(!isEmpty(street) && !isEmpty(province) && !isEmpty(city) && !isEmpty(suburb)
+                        && !isEmpty(firstName)&&
                         !isEmpty(lastName) && !isEmpty(email) && !isEmpty(password) &&
                         !isEmpty(confirmPassword)  && !isEmpty(phone) ){
 
@@ -163,13 +171,16 @@ public class CustomerRegistration extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             HashMap<String, String> hashMap1 = new HashMap<>();
-                            hashMap1.put("Address", address);
-                            hashMap1.put("First Name", firstName);
-                            hashMap1.put("Last Name", lastName);
-                            hashMap1.put("Email", email);
-                            hashMap1.put("Mobile No", phone);
+                            hashMap1.put("streetNo", street);
+                            hashMap1.put("province", province);
+                            hashMap1.put("city", city);
+                            hashMap1.put("suburb", suburb);
+                            hashMap1.put("firstName", firstName);
+                            hashMap1.put("lastName", lastName);
+                            hashMap1.put("email", email);
+                            hashMap1.put("mobileNo", phone);
 
-                            mFirebaseDatabase.getInstance().getReference("Customers")
+                            mFirebaseDatabase.getInstance().getReference("Customer")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(hashMap1)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {

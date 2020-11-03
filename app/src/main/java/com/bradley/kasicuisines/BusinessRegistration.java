@@ -28,12 +28,12 @@ import java.util.HashMap;
 public class BusinessRegistration extends AppCompatActivity {
 
     //Strings
-    String storeName, storeAddress, firstName, lastName, email,
+    String storeName, street, province, city, suburb, firstName, lastName, email,
             password, confirmPassword, phone, role="Restaurant",
             emailPattern = "[a-zA-Z0-9]+@[a-z]+\\.+[a-z]+";
 
     //Widgets
-    TextInputLayout store_name, store_address, b_first_name, b_last_name, b_email,
+    TextInputLayout store_name, street_no, prvnc, cty, sub, b_first_name, b_last_name, b_email,
             b_password, b_confirm_password, b_phone;
     CountryCodePicker b_country_code;
     Button b_signup_button, b_signin_email, b_signin_phone;
@@ -44,7 +44,7 @@ public class BusinessRegistration extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase;
 
     ProgressDialog mDialog;
-    public final static String PHONE_NUMBER =  "phoneNumber";
+    public final static String PHONE_NUMBER =  "phoneNo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,10 @@ public class BusinessRegistration extends AppCompatActivity {
         setContentView(R.layout.activity_business_registration);
 
         store_name = findViewById(R.id.store_name);
-        store_address = findViewById(R.id.store_address);
+        street_no = findViewById(R.id.street_address);
+        prvnc = findViewById(R.id.province);
+        cty = findViewById(R.id.city);
+        sub = findViewById(R.id.suburb);
         b_first_name = findViewById(R.id.b_first_name);
         b_last_name = findViewById(R.id.b_last_name);
         b_email = findViewById(R.id.b_email);
@@ -68,14 +71,17 @@ public class BusinessRegistration extends AppCompatActivity {
 
         mDialog = new ProgressDialog(BusinessRegistration.this);
 
-        mDatabaseReference = mFirebaseDatabase.getInstance().getReference("Restaurants");
+        mDatabaseReference = mFirebaseDatabase.getInstance().getReference("Restaurant");
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         b_signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 storeName = store_name.getEditText().getText().toString();
-                storeAddress = store_address.getEditText().getText().toString();
+                street = street_no.getEditText().getText().toString();
+                province = prvnc.getEditText().getText().toString();
+                city = cty.getEditText().getText().toString();
+                suburb = sub.getEditText().getText().toString();
                 firstName = b_first_name.getEditText().getText().toString();
                 lastName = b_last_name.getEditText().getText().toString();
                 email = b_email.getEditText().getText().toString().trim();
@@ -83,7 +89,8 @@ public class BusinessRegistration extends AppCompatActivity {
                 confirmPassword = b_confirm_password.getEditText().getText().toString();
                 phone = b_phone.getEditText().getText().toString();
 
-                if(!isEmpty(storeName) && !isEmpty(storeAddress) && !isEmpty(firstName) &&
+                if(!isEmpty(storeName) && !isEmpty(street) && !isEmpty(province)
+                        && !isEmpty(suburb) && !isEmpty(firstName) &&
                         !isEmpty(lastName) && !isEmpty(email) && !isEmpty(password) &&
                         !isEmpty(confirmPassword)  && !isEmpty(phone) ){
 
@@ -167,13 +174,16 @@ public class BusinessRegistration extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             HashMap<String, String> hashMap1 = new HashMap<>();
                             hashMap1.put("storeName", storeName);
-                            hashMap1.put("storeAddress", storeAddress);
+                            hashMap1.put("streetNo", street);
+                            hashMap1.put("province", province);
+                            hashMap1.put("city", city);
+                            hashMap1.put("suburb", suburb);
                             hashMap1.put("firstName", firstName);
                             hashMap1.put("lastName", lastName);
                             hashMap1.put("email", email);
                             hashMap1.put("mobileNo", phone);
 
-                            mFirebaseDatabase.getInstance().getReference("Restaurants")
+                            mFirebaseDatabase.getInstance().getReference("Restaurant")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(hashMap1)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
