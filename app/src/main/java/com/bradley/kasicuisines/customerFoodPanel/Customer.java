@@ -2,12 +2,12 @@ package com.bradley.kasicuisines.customerFoodPanel;
 
 public class Customer {
 
-    private String streetNo, province, city, suburb, email, firstName, lastName, mobileNo;
+    private String streetNo, province, city, suburb, email, firstName, lastName, mobileNo, LocalAddress;
 
     public Customer() {
     }
 
-    public Customer(String streetNo, String province, String city, String suburb, String email, String firstName, String lastName, String mobileNo) {
+    public Customer(String streetNo, String province, String city, String suburb, String email, String firstName, String lastName, String mobileNo, String localAddress) {
         this.streetNo = streetNo;
         this.province = province;
         this.city = city;
@@ -16,6 +16,7 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobileNo = mobileNo;
+        this.LocalAddress=localAddress;
     }
 
     public String getStreetNo() {
@@ -80,5 +81,13 @@ public class Customer {
 
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
+    }
+
+    public String getLocalAddress() {
+        return LocalAddress;
+    }
+
+    public void setLocalAddress(String localAddress) {
+        LocalAddress = localAddress;
     }
 }
