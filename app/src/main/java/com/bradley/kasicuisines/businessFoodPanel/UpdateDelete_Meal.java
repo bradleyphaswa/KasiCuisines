@@ -22,7 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bradley.kasicuisines.BusinessPanel_BottomNavigation;
+import com.bradley.kasicuisines.Restaurant;
+import com.bradley.kasicuisines.RestaurantPanel_BottomNavigation;
 import com.bradley.kasicuisines.R;
 import com.bradley.kasicuisines.models.UpdateDishModel;
 import com.bumptech.glide.Glide;
@@ -121,7 +122,7 @@ public class UpdateDelete_Meal extends AppCompatActivity {
                                 food.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        startActivity(new Intent(UpdateDelete_Meal.this, BusinessPanel_BottomNavigation.class));
+                                        startActivity(new Intent(UpdateDelete_Meal.this, RestaurantPanel_BottomNavigation.class));
                                     }
                                 });
                                 AlertDialog alert = food.create();

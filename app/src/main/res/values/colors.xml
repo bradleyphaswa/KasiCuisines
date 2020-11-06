@@ -10,8 +10,11 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorWhiteDark">#DBDBDB</color>
     <color name="colorPrimaryLight">#CA7474</color>
+    <color name="darkgreen">#026909</color>
     <color name="colorBackground">#F4F7F7</color>
+    <color name="OffWhite">#36FFFFFF</color>
     <color name="colorGreenLight">#4EF80C</color>
     <color name="colorGreen">#103701</color>
+    <color name="DarkBlue">#250285</color>
 
 </resources>

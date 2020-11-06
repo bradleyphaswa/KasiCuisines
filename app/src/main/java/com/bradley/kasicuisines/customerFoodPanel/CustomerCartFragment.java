@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bradley.kasicuisines.Customer;
 import com.bradley.kasicuisines.R;
 import com.bradley.kasicuisines.ReusableCode.ReusableCodeForAll;
 import com.bradley.kasicuisines.SendNotification.APIService;
@@ -157,7 +158,7 @@ public class CustomerCartFragment extends Fragment {
                                                 builder.setTitle("Enter Address");
                                                 LayoutInflater inflater = getActivity().getLayoutInflater();
                                                 View view = inflater.inflate(R.layout.enter_address, null);
-                                                final EditText localaddress = (EditText) view.findViewById(R.id.LA);
+                                                final EditText streetNo = (EditText) view.findViewById(R.id.LA);
                                                 final EditText addnote = (EditText) view.findViewById(R.id.addnote);
                                                 RadioGroup group = (RadioGroup) view.findViewById(R.id.grp);
                                                 final RadioButton home = (RadioButton) view.findViewById(R.id.HA);
@@ -168,9 +169,9 @@ public class CustomerCartFragment extends Fragment {
                                                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                                                         if (home.isChecked()) {
 
-                                                            localaddress.setText(customer.getLocalAddress() + ", " + customer.getSuburb());
+                                                            streetNo.setText(customer.getStreetNo() + ", " + customer.getSuburb());
                                                         } else if (other.isChecked()) {
-                                                            localaddress.getText().clear();
+                                                            streetNo.getText().clear();
                                                             Toast.makeText(getContext(), "check", Toast.LENGTH_SHORT).show();
                                                         }
                                                     }
@@ -193,7 +194,7 @@ public class CustomerCartFragment extends Fragment {
                                                                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                                                                     final Cart cart1 = dataSnapshot1.getValue(Cart.class);
                                                                     mealId = cart1.getMealId();
-                                                                    address = localaddress.getText().toString().trim();
+                                                                    address = streetNo.getText().toString().trim();
                                                                     Addnote = addnote.getText().toString().trim();
                                                                     final HashMap<String, String> hashMap = new HashMap<>();
                                                                     hashMap.put("restaurantId", cart1.getRestaurantId());

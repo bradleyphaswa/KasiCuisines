@@ -9,24 +9,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".customerFoodPanel.OrderMeal"></activity>
-        <activity android:name=".businessFoodPanel.Business_postMeal" />
+        <activity android:name=".deliveryFoodPanel.DriverPhoneSendOTP"></activity>
+        <activity android:name=".deliveryFoodPanel.DriverPhoneNumber" />
+        <activity android:name=".deliveryFoodPanel.DriverPassword" />
+        <activity android:name=".deliveryFoodPanel.DeliveryShipOrderView" />
+        <activity android:name=".deliveryFoodPanel.Delivery_ShippingOrder" />
+        <activity android:name=".deliveryFoodPanel.DeliveryPendingOrderView" />
+        <activity android:name=".businessFoodPanel.RestaurantPreparedOrder" />
+        <activity android:name=".businessFoodPanel.RestaurantOrderToBePrepareView" />
+        <activity android:name=".businessFoodPanel.RestaurantOrderToBePrepared" />
+        <activity android:name=".businessFoodPanel.RestaurantPreparedOrderView" />
+        <activity android:name=".customerFoodPanel.CustomerPhoneSendOTP" />
+        <activity android:name=".customerFoodPanel.CustomerPhoneNumber" />
+        <activity android:name=".customerFoodPanel.CustomerPassword" />
+        <activity android:name=".customerFoodPanel.PendingOrders" />
+        <activity android:name=".customerFoodPanel.CustomerPaymentOTP" />
+        <activity android:name=".customerFoodPanel.CustomerOnlinePayment" />
+        <activity android:name=".customerFoodPanel.CustomerPayment" />
+        <activity android:name=".customerFoodPanel.PayableOrders" />
+        <activity android:name=".businessFoodPanel.Restaurant_Order_Meals" />
+        <activity android:name=".customerFoodPanel.OrderMeal" />
+        <activity android:name=".businessFoodPanel.Restaurant_postMeal" />
         <activity android:name=".businessFoodPanel.UpdateDelete_Meal" />
-        <activity android:name=".DriverSendOtp" />
-        <activity android:name=".DriverPanel_BottomNavigation" />
-        <activity android:name=".DriverVerifyPhone" />
+        <activity android:name=".DeliverySendOtp" />
+        <activity android:name=".DeliveryPanel_BottomNavigation" />
+        <activity android:name=".DeliveryVerifyPhone" />
         <activity android:name=".CustomerSendOtp" />
         <activity android:name=".CustomerPanel_BottomNavigation" />
         <activity android:name=".CustomerVerifyPhone" />
-        <activity android:name=".BusinessSendOtp" />
-        <activity android:name=".BusinessPanel_BottomNavigation" />
-        <activity android:name=".BusinessVerifyPhone" />
-        <activity android:name=".DriverRegistration" />
-        <activity android:name=".DriverLoginPhone" />
-        <activity android:name=".DriverLoginEmail" />
-        <activity android:name=".BusinessRegistration" />
-        <activity android:name=".BusinessLoginPhone" />
-        <activity android:name=".BusinessLoginEmail" />
+        <activity android:name=".RestaurantSendOtp" />
+        <activity android:name=".RestaurantPanel_BottomNavigation" />
+        <activity android:name=".RestaurantVerifyPhone" />
+        <activity android:name=".DeliveryRegistration" />
+        <activity android:name=".DeliveryLoginPhone" />
+        <activity android:name=".DeliveryLoginEmail" />
+        <activity android:name=".RestaurantRegistration" />
+        <activity android:name=".RestaurantLoginPhone" />
+        <activity android:name=".RestaurantLoginEmail" />
         <activity android:name=".CustomerRegistration" />
         <activity android:name=".CustomerLoginPhone" />
         <activity android:name=".CustomerLoginEmail" />
@@ -40,10 +59,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
+        <service
+            android:name=".SendNotification.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".SendNotification.MyFirebaseIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

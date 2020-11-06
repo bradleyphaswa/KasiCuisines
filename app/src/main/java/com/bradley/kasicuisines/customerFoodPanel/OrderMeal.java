@@ -13,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bradley.kasicuisines.Customer;
 import com.bradley.kasicuisines.CustomerPanel_BottomNavigation;
 import com.bradley.kasicuisines.R;
-import com.bradley.kasicuisines.businessFoodPanel.Restaurant;
+import com.bradley.kasicuisines.Restaurant;
 import com.bradley.kasicuisines.models.UpdateDishModel;
 import com.bumptech.glide.Glide;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
@@ -67,8 +68,8 @@ public class OrderMeal extends AppCompatActivity {
                 city = customer.getCity();
                 suburb = customer.getSuburb();
 
-                randomId = getIntent().getStringExtra("FoodMenu");
-                restaurantId = getIntent().getStringExtra("RestaurantId");
+                randomId = getIntent().getStringExtra("foodMenu");
+                restaurantId = getIntent().getStringExtra("restaurantId");
 
                 databaseReference = FirebaseDatabase.getInstance().getReference("FoodDetails")
                         .child(province).child(city).child(suburb).child(restaurantId).child(randomId);

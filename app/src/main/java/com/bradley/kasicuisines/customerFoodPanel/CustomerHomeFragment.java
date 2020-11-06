@@ -1,6 +1,5 @@
 package com.bradley.kasicuisines.customerFoodPanel;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,12 +12,13 @@ import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.bradley.kasicuisines.MainMenu;
+import com.bradley.kasicuisines.Customer;
 import com.bradley.kasicuisines.R;
 import com.bradley.kasicuisines.models.UpdateDishModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +39,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     String province, city, suburb;
     DatabaseReference dataa, mDatabaseReference;
     SwipeRefreshLayout swipeRefreshLayout;
+    SearchView searchView;
 
 
     @Nullable
@@ -49,7 +50,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
         getActivity().setTitle("Home");
         setHasOptionsMenu(true);
 
-        mRecyclerView = v.findViewById(R.id.recycler_menu);
+        mRecyclerView = v.findViewById(R.id.recycle_menu);
         mRecyclerView.setHasFixedSize(true);
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.move);
         mRecyclerView.startAnimation(animation);
@@ -124,29 +125,40 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return true;
+            }
+        });
+    }
+
+    private void search(final String searchtext) {
+
+        ArrayList<UpdateDishModel> mylist = new ArrayList<>();
+        for (UpdateDishModel object : updateDishModelList) {
+            if (object.getMealName().toLowerCase().contains(searchtext.toLowerCase())) {
+                mylist.add(object);
+            }
+        }
+        adapter = new CustomerHomeAdapter(getContext(), mylist);
+        mRecyclerView.setAdapter(adapter);
+
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.logout, menu);
+        inflater.inflate(R.menu.search, menu);
+        MenuItem menuItem = menu.findItem(R.id.Searchdish);
+        searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Search Dish");
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
-        if(id == R.id.logout) {
-            logout();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void logout() {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getActivity(), MainMenu.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 }

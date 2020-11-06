@@ -1,6 +1,9 @@
 <resources>
+
     <string name="app_name">Kasi Cuisines</string>
+
     <string name="slogan">Siyak\'lethela i gaulo!</string>
+
     <string name="kasi_gaulo">Kasi Gaulo</string>
     <string name="signin_with_email">Signin with email</string>
     <string name="signin_with_phone">Signin with phone</string>
@@ -30,4 +33,19 @@
     <string name="business_login">Business Login</string>
     <string name="customer_registration">Customer Registration</string>
     <string name="driver_registration">Driver Registration</string>
+    <string-array name="Province">
+        <item>Eastern Cape</item>
+        <item>Free State</item>
+        <item>Gauteng</item>
+        <item>KwaZulu Natal</item>
+        <item>Limpopo</item>
+        <item>Mpumalanga</item>
+        <item>Northern Cape</item>
+        <item>North West</item>
+        <item>Western Cape</item>
+    </string-array>
+    <string-array name="shipper">
+        <item>Shipper 1</item>
+        <item>Shipper 2</item>
+    </string-array>
 </resources>

@@ -50,16 +50,16 @@ public class SelectLoginMethod extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(type.equals("Email")) {
-                    startActivity(new Intent(SelectLoginMethod.this, BusinessLoginEmail.class));
+                    startActivity(new Intent(SelectLoginMethod.this, RestaurantLoginEmail.class));
 
                 }
                 if(type.equals("Phone")) {
-                    startActivity(new Intent(SelectLoginMethod.this, BusinessLoginPhone.class));
+                    startActivity(new Intent(SelectLoginMethod.this, RestaurantLoginPhone.class));
 
                 }
 
                 if(type.equals("SignUp")) {
-                    startActivity(new Intent(SelectLoginMethod.this, BusinessRegistration.class));
+                    startActivity(new Intent(SelectLoginMethod.this, RestaurantRegistration.class));
 
                 }
             }
@@ -69,16 +69,16 @@ public class SelectLoginMethod extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(type.equals("Email")) {
-                    startActivity(new Intent(SelectLoginMethod.this, DriverLoginEmail.class));
+                    startActivity(new Intent(SelectLoginMethod.this, DeliveryLoginEmail.class));
 
                 }
                 if(type.equals("Phone")) {
-                    startActivity(new Intent(SelectLoginMethod.this, DriverLoginPhone.class));
+                    startActivity(new Intent(SelectLoginMethod.this, DeliveryLoginPhone.class));
 
                 }
 
                 if(type.equals("SignUp")) {
-                    startActivity(new Intent(SelectLoginMethod.this, DriverRegistration.class));
+                    startActivity(new Intent(SelectLoginMethod.this, DeliveryRegistration.class));
 
                 }
             }

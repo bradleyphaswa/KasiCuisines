@@ -3,13 +3,9 @@ package com.bradley.kasicuisines;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 String role = snapshot.getValue(String.class);
                                 if(role.equals("Restaurant")) {
-                                    startActivity(new Intent(getApplicationContext(), BusinessPanel_BottomNavigation.class));
+                                    startActivity(new Intent(getApplicationContext(), RestaurantPanel_BottomNavigation.class));
                                     finish();
                                 }
 
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
 
                                 if(role.equals("Driver")) {
-                                    startActivity(new Intent(getApplicationContext(), DriverPanel_BottomNavigation.class));
+                                    startActivity(new Intent(getApplicationContext(), DeliveryPanel_BottomNavigation.class));
                                     finish();
                                 }
                             }

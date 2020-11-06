@@ -9,12 +9,17 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.bradley.kasicuisines.SendNotification.Token;
 import com.bradley.kasicuisines.customerFoodPanel.CustomerCartFragment;
 import com.bradley.kasicuisines.customerFoodPanel.CustomerHomeFragment;
 import com.bradley.kasicuisines.customerFoodPanel.CustomerOrdersFragment;
 import com.bradley.kasicuisines.customerFoodPanel.CustomerProfileFragment;
 import com.bradley.kasicuisines.customerFoodPanel.CustomerTrackFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class CustomerPanel_BottomNavigation extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -24,6 +29,7 @@ public class CustomerPanel_BottomNavigation extends AppCompatActivity implements
         setContentView(R.layout.activity_customer_panel__bottom_navigation);
         BottomNavigationView navigationView = findViewById(R.id.c_bottom_nav);
         navigationView.setOnNavigationItemSelectedListener(this);
+        UpdateToken();
         String name = getIntent().getStringExtra("PAGE");
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -41,6 +47,15 @@ public class CustomerPanel_BottomNavigation extends AppCompatActivity implements
         } else {
             loadCustomerFragment(new CustomerHomeFragment());
         }
+
+    }
+
+    private void UpdateToken() {
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        String refreshToken = FirebaseInstanceId.getInstance().getToken();
+        Token token = new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
 
     }
 
